@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="langScriptsApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>lang Scripts</title>
+  <link href="/assets/css/vendors.css" rel="stylesheet"><link href="/assets/css/app.css" rel="stylesheet"></head>
+  <body ng-controller="mainCtrl">
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img src="assets/img/logo.png" width="42" height="42" class="d-inline-block align-top">
+        langScripts
+      </a>
+    </nav>
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="col">
+            <h2>Вставить непереведенную часть</h2>
+            <div class="input-group">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" accept="application/json" id="needyTransMerge" read-text="onFileSelect($files)" filename="needyTransMerge">
+                <label class="custom-file-label" for="needyTransMerge">"Неполноценный" перевод</label>
+              </div>
+            </div>
+            <div class="input-group mt-2">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" accept="application/json" id="translatedPieceMerge" read-text="onFileSelect($filesasdas)" filename="translatedPieceMerge">
+                <label class="custom-file-label" for="translatedPieceMerge">Переведенная часть</label>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary btn-block mt-2" ng-click="merge(needyTransMerge, translatedPieceMerge)">Скачать полный перевод</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="col">
+            <h2>Извлечь непереведенное</h2>
+            <div class="input-group">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" accept="application/json" id="needyTransExtract" read-text="onFileSelect($files)" filename="needyTransExtract">
+                <label class="custom-file-label" for="needyTransExtract">"Неполноценный" перевод</label>
+              </div>
+            </div>
+            <div class="input-group mt-2">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" accept="application/json" id="fullyTransExtract" read-text="onFileSelect($files)" filename="fullyTransExtract">
+                <label class="custom-file-label" for="fullyTransExtract">Полный перевод</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <input type="checkbox" id="wrongTranslate" ng-model="wrongTranslate">
+                <label for="wrongTranslate">Перевод УЖЕ содержит непереведенные части</label>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary btn-block mt-2" ng-click="saveNonTranslated(needyTransExtract, fullyTransExtract, wrongTranslate)">Скачать непереведенное</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script type="text/javascript" src="/assets/js/vendors.js"></script><script type="text/javascript" src="/assets/js/app.js"></script></body>
+</html>
+
+
